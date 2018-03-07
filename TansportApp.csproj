@@ -42,12 +42,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Comparers.cs" />
+    <Compile Include="FuelComparers.cs" />
     <Compile Include="PassengerVehicle.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SpecializedFreightVehicle.cs" />
-    <Compile Include="Table.cs" />
     <Compile Include="TruckVehicle.cs" />
     <Compile Include="Vehicle.cs" />
   </ItemGroup>

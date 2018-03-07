@@ -6,22 +6,30 @@ using System.Threading.Tasks;
 
 namespace TansportApp
 {
-    class PassengerVehicle:Vehicle
+    class PassengerVehicle:Vehicle // класс пассажирский автотранспорт наследуемый от класса Vehicle (автотранспорт)
     {
-        int passengersSeatsCount;
-        public int PassengersSeatsCount { get; set; }
-        public PassengerVehicle(string vt,int fc, int mpm,int psc):base(vt,fc,mpm)
+        
+        public int PassengersSeatsCount { get; set; } // кол-во пассажирских мест
+
+        // конструктор с параметрами, наследует от базового класса параметры:
+        // maxPermissibleMass - максимально допустимая масса,
+        // vehicleType - вид автотраспорта,
+        // fuelConsumption - расход топлива
+        public PassengerVehicle(string vehicleType,int fuelConsumption, int maxPermissibleMass,int passengersSeatsCount) :base(vehicleType, fuelConsumption, maxPermissibleMass) 
         {
-            PassengersSeatsCount = psc;
-            VehicleLabel = 2;
+            PassengersSeatsCount = passengersSeatsCount;
         }
         public override double GetFactorUtility()
         {
-            return (MaxPermissibleMass/FuelConsumption);
+            return ((PassengersSeatsCount*80)/FuelConsumption);
         }
+        //public override string ToString()
+        //{
+        //    return base.ToString()+("\tВместимость: "+PassengersSeatsCount+" человек");
+        //}
         public override string ToString()
         {
-            return base.ToString()+("\tВместимость: "+PassengersSeatsCount+" человек");
+            return base.ToString();
         }
     }
 }

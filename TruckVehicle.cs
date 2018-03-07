@@ -6,25 +6,32 @@ using System.Threading.Tasks;
 
 namespace TansportApp
 {
-    class TruckVehicle:Vehicle
+    class TruckVehicle:Vehicle // Класс грузовые наследуемый от класса автотраспорт и является базовым для класса спец груз авто
     {
-        int maxCargoVolume;
-        public int MaxCargoVolume { get; set; }
-        int maxCargoWeight;
-        public int MaxCargoWeight { get; set; }
-        public TruckVehicle(string vt,int fc, int mpm, int mcv,int mcw):base(vt,fc,mpm)
+        public int MaxCargoVolume { get; set; } // максимальный перевозимый объем груза
+        public int MaxCargoWeight { get; set; } // максимальна масса перевозимого груза
+
+        // Конструктор с параметрами для грузовых машин, наследует из базового класса
+        // vehicleType - тип атотранспорта,   
+        //fuelConsumption- расход топлива, maxPermissibleMass - максимально допустимая масса
+
+        public TruckVehicle(string vehicleType,int fuelConsumption, int maxPermissibleMass, int maxCargoVolume,int maxCargoWeight):base(vehicleType,fuelConsumption,maxPermissibleMass)
         {
-            MaxCargoWeight = mcw;
-            MaxCargoVolume = mcv;
-            VehicleLabel = 1;
+            MaxCargoWeight = maxCargoWeight;
+            MaxCargoVolume = maxCargoVolume;
+           
         }
-        public override double GetFactorUtility()
+        public override double GetFactorUtility() // метод для определения коэф полезности
         {
-            return (MaxPermissibleMass/FuelConsumption);
+            return (MaxCargoWeight/FuelConsumption);
         }
+        //public override string ToString()
+        //{
+        //    return base.ToString()+("\tМаксимальный объем груза: "+MaxCargoVolume+ "м3" + "\tМаксимальный груз: "+MaxCargoWeight+"кг");
+        //}
         public override string ToString()
         {
-            return base.ToString()+("\tМаксимальный объем груза: "+MaxCargoVolume+ "м3" + "\tМаксимальный груз: "+MaxCargoWeight+"кг");
+            return base.ToString();
         }
     }
 }
